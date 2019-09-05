@@ -16,20 +16,6 @@ public static class ExtensionMethods
         return new Vector2(origin.x, origin.y);
     }
 
-    public static bool CheckID(this MonoBehaviour mono, object thatID, int thisID)
-    {
-        try
-        {
-            int id = (int)thatID;
-            return id == thisID;
-        }
-        catch (System.Exception)
-        {
-            mono.Log("error when cast int id");
-            return false;
-            throw;
-        }
-    }
 
     public static void SetCallback(this MonoBehaviour mono, float duration, System.Action callback)
     {
