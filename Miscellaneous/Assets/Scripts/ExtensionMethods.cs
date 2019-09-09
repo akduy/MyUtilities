@@ -3,6 +3,7 @@ using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
+using Random = UnityEngine.Random;
 
 public static class ExtensionMethods
 {
@@ -71,5 +72,12 @@ public static class ExtensionMethods
             Mathf.Clamp(a.y, max.x, max.y)
         );
         return result;
+    }
+
+    public static float StepRandom(float min, float max, float stepSize)
+    {
+        float temp = Random.Range(min, max);
+        int numStep = Mathf.FloorToInt(temp / stepSize);
+        return numStep * stepSize;
     }
 }
