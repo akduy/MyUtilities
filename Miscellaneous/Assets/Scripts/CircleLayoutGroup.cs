@@ -18,7 +18,8 @@ public class CircleLayoutGroup : MonoBehaviour
         }
     }
 
-    private void Enable()
+    [ContextMenu("Enable")]
+    public void Enable()
     {
         int childCount = transform.childCount;
         for (int i = 0; i < childCount; i++)
