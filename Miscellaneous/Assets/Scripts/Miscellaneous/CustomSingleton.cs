@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MySingleton<T> : MonoBehaviour where T : MonoBehaviour
+public class CustomSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     public static T instance;
     protected bool useDontDestroyOnload;
