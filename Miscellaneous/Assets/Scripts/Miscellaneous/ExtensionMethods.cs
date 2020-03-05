@@ -22,11 +22,25 @@ public static class ExtensionMethods
     {
         try
         {
-            T result = (T)input;
+            T result = (T) input;
             return result;
         }
         catch (System.Exception)
         {
+            throw;
+        }
+    }
+
+    public static T TryParse<T>(this object a)
+    {
+        try
+        {
+            T result = (T) a;
+            return result;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
             throw;
         }
     }
@@ -45,7 +59,8 @@ public static class ExtensionMethods
         callback();
     }
 
-    public static void SetLoopCoroutine(this MonoBehaviour mono, float tick, Action tickCallback, Action endCallback, Func<Boolean> condition)
+    public static void SetLoopCoroutine(this MonoBehaviour mono, float tick, Action tickCallback, Action endCallback,
+        Func<Boolean> condition)
     {
         mono.StartCoroutine(Foo(tick, tickCallback, endCallback, condition));
     }
@@ -57,6 +72,7 @@ public static class ExtensionMethods
             tickCallback();
             yield return new WaitForSeconds(tick);
         }
+
         endCallback();
     }
 
@@ -72,12 +88,5 @@ public static class ExtensionMethods
             Mathf.Clamp(a.y, max.x, max.y)
         );
         return result;
-    }
-
-    public static float StepRandom(float min, float max, float stepSize)
-    {
-        float temp = Random.Range(min, max);
-        int numStep = Mathf.FloorToInt(temp / stepSize);
-        return numStep * stepSize;
     }
 }
